@@ -1,6 +1,6 @@
 #!/opt/local/bin/bash
 
-if false; then
+if true; then
 
 sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
 sudo port uninstall apache2
@@ -22,7 +22,7 @@ sudo port install apache2
 
 fi
 
-if false; then
+if true; then
 
 /opt/local/sbin/apachectl -t
 sudo port unload apache2
@@ -30,13 +30,13 @@ sudo port load apache2
 
 fi
 
-if false; then
+if true; then
 
 /Applications/Firefox.app/Contents/MacOS/firefox http://localhost/
 
 fi
 
-if false; then
+if true; then
 
   export WORKFILES= ~/macports/workfiles
   mkdir -p $WORKFILES
@@ -51,21 +51,21 @@ if false; then
   export WORKFILE_06=httpd.conf.06.txt
   export WORKFILE_07=httpd.conf.07.txt
 
-  cat $WORKFILE_00 | sed 's/#ServerName www.example.com:80/ServerName localhost:80/' > $WORKFILE_01
+  #cat $WORKFILE_00 | sed 's/#ServerName www.example.com:80/ServerName localhost:80/' > $WORKFILE_01
 
-  cat $WORKFILE_01 | sed 's/#(Include etc\/apache2\/extra\/httpd-userdir.conf)/$1/' > $WORKFILE_02
+  #cat $WORKFILE_01 | sed 's/#(Include etc\/apache2\/extra\/httpd-userdir.conf)/$1/' > $WORKFILE_02
 
-  cat $WORKFILE_02 | sed 's/#(Include etc\/apache2\/extra\/httpd-manual.conf)/$1/' > $WORKFILE_03
+  #cat $WORKFILE_02 | sed 's/#(Include etc\/apache2\/extra\/httpd-manual.conf)/$1/' > $WORKFILE_03
 
-  cat $WORKFILE_03 | sed 's/#(LoadModule ssl_module lib\/apache2\/modules\/mod_ssl.so)/$1/' > $WORKFILE_04
+  #cat $WORKFILE_03 | sed 's/#(LoadModule ssl_module lib\/apache2\/modules\/mod_ssl.so)/$1/' > $WORKFILE_04
 
-  cat $WORKFILE_04 | sed 's/#(LoadModule userdir_module lib\/apache2\/modules\/mod_userdir.so)/$1/' > $WORKFILE_05
+  #cat $WORKFILE_04 | sed 's/#(LoadModule userdir_module lib\/apache2\/modules\/mod_userdir.so)/$1/' > $WORKFILE_05
 
-  cat $WORKFILE_05 | sed 's/#(LoadModule userdir_module lib\/apache2\/modules\/mod_userdir.so)/$1/' > $WORKFILE_06
+  #cat $WORKFILE_05 | sed 's/#(LoadModule userdir_module lib\/apache2\/modules\/mod_userdir.so)/$1/' > $WORKFILE_06
 
-  cat $WORKFILE_06 | sed 's/#(LoadModule rewrite_module lib\/apache2\/modules\/mod_rewrite.so)/$1/' > $WORKFILE_07
+  #cat $WORKFILE_06 | sed 's/#(LoadModule rewrite_module lib\/apache2\/modules\/mod_rewrite.so)/$1/' > $WORKFILE_07
 
-  sudo cp -f $WORKFILE_07 $WORKFILE_00
+  #sudo cp -f $WORKFILE_07 $WORKFILE_00
 
 fi
 
