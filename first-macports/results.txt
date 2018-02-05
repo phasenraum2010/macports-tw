@@ -1,0 +1,40 @@
+--->  Some of the ports you installed have notes:
+  py27-cython has the following notes:
+    To make the Python 2.7 version of Cython the one that is run when you execute the commands without a version suffix, e.g. 'cython', run:
+
+    port select --set cython cython27
+  py27-ipython has the following notes:
+    Please note that since version 4.0 IPython was refactored and splitted across several packages under new project named Jupyter.
+
+    To make this the default IPython or IPython2 (i.e., the version run by the 'ipython' or 'ipython2' commands), run one or both of:
+
+        sudo port select --set ipython py27-ipython
+        sudo port select --set ipython2 py27-ipython
+    To enable support for the notebook please install py27-notebook port:
+
+        sudo port install py27-notebook
+  py27-matplotlib has the following notes:
+    The default backend is the interactive Mac OS X backend. Different backends can be specified using the ~/.matplotlib/matplotlibrc file. More
+    details regarding backends can be found in the matplotlib FAQ:
+
+    http://matplotlib.sourceforge.net/faq/installing_faq.html#what-is-a-backend
+
+
+
+    ----
+
+
+    -->  Cleaning p5.26-svn-mirror
+--->  Computing dependencies for websvn
+Error: Dependency 'php5-mbstring' not found.
+Error: Follow https://guide.macports.org/#project.tickets to report a bug.
+Error: Processing of port websvn failed
+--->  Some of the ports you installed have notes:
+  colorsvn has the following notes:
+    If you have subversion installed from macports, change  /opt/local/etc/colorsvnrc to contain 'svn: /opt/local/bin/svn'
+    Also, verify your terminal's $TERM is listed in the colorsvrc file.
+--->  Computing dependencies for git
+--->  Cleaning git
+--->  Computing dependencies for cgit
+--->  Fetching archive for cgit
+--->  Attempting to fetch cgit-0.9.0.3_2.darwin_1
