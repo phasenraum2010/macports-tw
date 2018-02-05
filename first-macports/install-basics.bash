@@ -12,9 +12,11 @@ sudo port install py27-notebook
 
 sudo port install ruby25
 sudo port select ruby ruby25
+sudo port rb-rubygems
 sudo port install rbenv ruby-build
-gem install jekyll bundler
 
 sudo port install colorsvn cvs2svn p5.26-svn-mirror websvn svndigest subversion-perlbindings subversion-python27bindings subversion-rubybindings
 sudo port install git cgit git-cvs github-backup svn2git
 sudo port install vim mpvim rails.vim p5.26-text-vimcolor
+
+sudo gem install jekyll bundler
