@@ -1,0 +1,85 @@
+
+sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
+sudo port uninstall apache2
+sudo port clean --dist apache2
+sudo port install apache2
+
+
+
+/opt/local/sbin/apachectl -t
+sudo port unload apache2
+sudo port load apache2
+
+
+sudo vim /opt/local/etc/apache2/httpd.conf
+
+ServerName localhost:80
+
+
+sudo cp /opt/local/etc/apache2/extra/httpd-userdir.conf.orig /opt/local/etc/apache2/extra/httpd-userdir.conf
+
+
+#Include etc/apache2/extra/httpd-userdir.conf
+
+cd ~
+mkdir Sites
+
+sudo cp /opt/local/etc/apache2/extra/httpd-manual.conf.orig /opt/local/etc/apache2/extra/httpd-manual.conf
+
+#Include etc/apache2/extra/httpd-manual.conf
+
+echo "Apache SSL/TLS Encryption (aks Secure Sockets or https)"
+echo ""
+echo "Generate a self-signed certificate"
+echo ""
+echo "Enter pass phrase for server.key [enter your passphrase, a simple password we will remove soon]"
+echo ""
+
+sudo openssl genrsa -des3 -out server.key 1024
+
+echo ""
+echo "[you can accept all the defaults, it does not matter, or customize it to your liking]"
+echo ""
+
+sudo openssl req -new -key server.key -out server.csr
+
+echo ""
+echo "[will ask for passphrase - the same as you entered in the first step]"
+echo ""
+
+sudo openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt
+
+sudo cp server.key server.key.bak
+sudo openssl rsa -in server.key.bak -out server.key
+
+echo ""
+echo "[will ask for passphrase - the same as you entered in the first step]"
+echo ""
+
+sudo cp server.crt /opt/local/etc/apache2/
+sudo cp server.key /opt/local/etc/apache2/
+
+sudo vim /opt/local/etc/apache2/httpd.conf
+
+LoadModule ssl_module modules/mod_ssl.so
+
+# Secure (SSL/TLS) connections
+Include etc/apache2/extra/httpd-ssl.conf
+
+sudo cp /opt/local/etc/apache2/extra/httpd-ssl.conf.orig /opt/local/etc/apache2/extra/httpd-ssl.conf
+
+
+sudo vim /opt/local/etc/apache2/extra/httpd-ssl.conf"
+
+echo "#   General setup for the virtual host"
+echo "ServerName www.example.com:443"
+echo "ServerAdmin you@example.com"
+echo "ErrorLog "/opt/local/var/log/apache2/error_log"
+echo "TransferLog "/opt/local/var/log/apache2/access_log"
+echo ""
+echo ""
+echo "Configure this section appropriately."
+echo "Assuming you wish to implement SSL on your entire server, DocumentRoot and ServerName should match the values in "/opt/local/apache2/conf/httpd.conf"
+echo "As there are many optional ways of configuring security on your web server, consult the Apache2 manual for details: ​http://httpd.apache.org/docs/2.4/ssl/"
+echo ""
+echo "After each change to the config file, you should again verify the file syntax, and then you need to stop and restart Apache for the changes to take effect."
