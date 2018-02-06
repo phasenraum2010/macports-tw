@@ -1,11 +1,11 @@
 #!/bin/sh
 
-if false; then
+if true; then
   sudo port -v selfupdate
   sudo port upgrade outdated
 fi
 
-if false; then
+if true; then
   sudo port install python27
   sudo port select --set python python27
   sudo port select --set python2 python27
@@ -26,10 +26,10 @@ fi
 
 if true; then
   sudo port install colorsvn p5.26-svn-mirror svndigest subversion-perlbindings subversion-python27bindings subversion-rubybindings
-  sudo port install git cgit github-backup
+  sudo port install git github-backup
   sudo port install vim mpvim rails.vim p5.26-text-vimcolor
 fi
 
-if false; then
+if true; then
   sudo gem install jekyll bundler
 fi
