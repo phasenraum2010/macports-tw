@@ -1,0 +1,30 @@
+---
+layout: post
+title:  "Installing Trac on mac OS"
+date:   2018-02-05 13:45:50 +0100
+categories: jekyll update
+---
+# Installing Trac on mac OS
+
+- [https://trac.edgewall.org/wiki/TracOnOsx](https://trac.edgewall.org/wiki/TracOnOsx#InstallingusingMacPorts/)
+
+## Start with updating
+
+```bash
+sudo port -v selfupdate
+sudo port upgrade outdated
+```
+
+Install SCM
+
+```bash
+sudo port install bazaar subversion git mercurial cvs
+```
+
+## Install ruby and rails
+```bash
+sudo port install ruby24
+sudo port select ruby ruby24
+sudo port install rb-rubygems
+sudo port install rbenv ruby-build
+```
